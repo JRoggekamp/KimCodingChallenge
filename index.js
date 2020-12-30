@@ -8,9 +8,11 @@ searchButton.addEventListener("click", evt => {
   fetch('https://acceptatie.monuta.nl/cms-services/api/plaatsen/'+ locationInput + '/vestigingen')
     .then(res => res.json())
     .then(locations => {
+      //defining the header that will be atop of the search results
     let listTitle = document.createElement('H2');
     listTitle.textContent = "Ik heb de volgende vestiging(en) gevonden:";
     locationDiv.appendChild(listTitle);
+    // iterating through the search results and mapping them to corresponding elements
       for (const location of locations.vestigingen) {
         let locationContainer = document.createElement('div');
         locationContainer.id = "location";
@@ -35,6 +37,7 @@ searchButton.addEventListener("click", evt => {
           urlLink.setAttribute('href', `${location.locatieURL}`),
           urlLink.innerHTML = "Bezoek locatiepagina"
         )
+        //appending all the components to the appropriate div
         locationDiv.appendChild(locationContainer);
         nameContainer.appendChild(listName);
         locationContainer.appendChild(nameContainer);
@@ -48,3 +51,7 @@ searchButton.addEventListener("click", evt => {
     })
     .catch(console.error);
 })
+
+function parseDiv(){
+  return
+}
